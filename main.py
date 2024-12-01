@@ -1,7 +1,7 @@
 import flet as ft
 
 
-def get_formulae(theta, acetaldehyde, methylbenzene):
+def get_formulae(phi, acetaldehyde, methylbenzene):
     formulas = {
         (12, 7): [23, 33, 29, 19, 23, 38, 19, 22, 33, 16, 36, 16, 25],
         (12, 12): [38, 45, 20, 20, 21, 51, 20, 30, 41, 25, 29, 19, 26],
@@ -19,34 +19,34 @@ def get_formulae(theta, acetaldehyde, methylbenzene):
         (
             "3-methyl-2,4-di-nitrobenzene",
             [
-                f"{values[0] - int(theta)}: Déboucheur + Peinture + Détergent = Méthylbenzène",
-                f"{values[1] - int(theta)}: Méthylbenzène + Bicarbonate de soude + Vinaigre + Détergent = Dinitro",
-                f"{values[2] - int(theta)}: Dinitro + Carburant = 3-methyl-2,4-di-nitrobenzene",
+                f"{values[0] - int(phi)}: Déboucheur + Peinture + Détergent = Méthylbenzène",
+                f"{values[1] - int(phi)}: Méthylbenzène + Bicarbonate de soude + Vinaigre + Détergent = Dinitro",
+                f"{values[2] - int(phi)}: Dinitro + Carburant = 3-methyl-2,4-di-nitrobenzene",
             ],
         ),
         (
             "Octa-hydro-2,5-nitro-3,4,7-para-zokine",
             [
-                f"{values[3] - int(theta)}: Carburant + Pièces = Formaldéhyde",
-                f"{values[4] - int(theta)}: Formaldéhyde + Nettoyant pour vitres = Hexamine",
-                f"{values[5] - int(theta)}: Hexamine + Vinaigre + Engrais + Détergent = Octa-hydro-2,5-nitro-3,4,7-para-zokine",
+                f"{values[3] - int(phi)}: Carburant + Pièces = Formaldéhyde",
+                f"{values[4] - int(phi)}: Formaldéhyde + Nettoyant pour vitres = Hexamine",
+                f"{values[5] - int(phi)}: Hexamine + Vinaigre + Engrais + Détergent = Octa-hydro-2,5-nitro-3,4,7-para-zokine",
             ],
         ),
         (
             "3,4-di-nitroxy-methyl-propane",
             [
-                f"{values[6] - int(theta)}: Vodka + Piecettes = Acétaldéhyde",
-                f"{values[7] - int(theta)}: Carburant + Pièces = Formaldéhyde",
-                f"{values[8] - int(theta)}: Acétaldéhyde + Formaldéhyde + Détergent = Aldéhyde pâteux",
-                f"{values[9] - int(theta)}: Aldéhyde pâteux + Dissolvant = 3,4-di-nitroxy-methyl-propane",
+                f"{values[6] - int(phi)}: Vodka + Piecettes = Acétaldéhyde",
+                f"{values[7] - int(phi)}: Carburant + Pièces = Formaldéhyde",
+                f"{values[8] - int(phi)}: Acétaldéhyde + Formaldéhyde + Détergent = Aldéhyde pâteux",
+                f"{values[9] - int(phi)}: Aldéhyde pâteux + Dissolvant = 3,4-di-nitroxy-methyl-propane",
             ],
         ),
         (
             "1,3,5 tera-nitra-phenol",
             [
-                f"{values[10] - int(theta)}: Huile de moteur + Insectifuge + Nettoyant pour roues = Phénol",
-                f"{values[11] - int(theta)}: Phénol + Déboucheur = Acide phénolsulfonique",
-                f"{values[12] - int(theta)}: Acide phénolsulfonique + Détergent = 1,3,5 tera-nitra-phenol",
+                f"{values[10] - int(phi)}: Huile de moteur + Insectifuge + Nettoyant pour roues = Phénol",
+                f"{values[11] - int(phi)}: Phénol + Déboucheur = Acide phénolsulfonique",
+                f"{values[12] - int(phi)}: Acide phénolsulfonique + Détergent = 1,3,5 tera-nitra-phenol",
             ],
         ),
     ]
@@ -54,8 +54,8 @@ def get_formulae(theta, acetaldehyde, methylbenzene):
 
 def main(page: ft.Page):
     page.title = "Chemical Formulae Calculator"
-    theta_dropdown = ft.Dropdown(
-        label="Θ (Theta)",
+    phi_dropdown = ft.Dropdown(
+        label="Φ (Phi)",
         options=[ft.dropdown.Option(str(i)) for i in range(2, 16)],
     )
     acetaldehyde_dropdown = ft.Dropdown(
@@ -69,16 +69,16 @@ def main(page: ft.Page):
     result_panel = ft.Column()
 
     def compute_formulae(e):
-        theta = theta_dropdown.value
+        phi = phi_dropdown.value
         acetaldehyde = acetaldehyde_dropdown.value
         methylbenzene = methylbenzene_dropdown.value
 
-        if not (theta and acetaldehyde and methylbenzene):
+        if not (phi and acetaldehyde and methylbenzene):
             result_panel.controls = [
                 ft.Text("Sélectionnez une valeur pour tous les champs.")
             ]
         else:
-            formulas = get_formulae(int(theta), int(acetaldehyde), int(methylbenzene))
+            formulas = get_formulae(int(phi), int(acetaldehyde), int(methylbenzene))
             if not formulas:
                 result_panel.controls = [ft.Text("Combinaison invalide.")]
             else:
@@ -102,7 +102,7 @@ def main(page: ft.Page):
     page.add(
         ft.Column(
             [
-                theta_dropdown,
+                phi_dropdown,
                 acetaldehyde_dropdown,
                 methylbenzene_dropdown,
                 compute_button,
