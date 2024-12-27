@@ -35,8 +35,8 @@ def get_formulae(phi, acetaldehyde, methylbenzene):
         (
             "3,4-di-nitroxy-methyl-propane",
             [
-                f"{values[6] - int(phi)}: Vodka + Piecettes = Acétaldéhyde",
-                f"{values[7] - int(phi)}: Carburant + Pièces = Formaldéhyde",
+                f"{values[7] - int(phi)}: Vodka + Piecettes = Acétaldéhyde",
+                f"{values[6] - int(phi)}: Carburant + Pièces = Formaldéhyde",
                 f"{values[8] - int(phi)}: Acétaldéhyde + Formaldéhyde + Détergent = Aldéhyde pâteux",
                 f"{values[9] - int(phi)}: Aldéhyde pâteux + Dissolvant = 3,4-di-nitroxy-methyl-propane",
             ],
